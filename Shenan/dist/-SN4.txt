@@ -1,0 +1,78 @@
+If T=76
+Then "a"->Str 1
+Else If T=66
+Then "b"->Str 1
+Else If T=56
+Then "c"->Str 1
+Else If T=46
+Then "d"->Str 1
+Else If T=36
+Then "e"->Str 1
+Else If T=26
+Then "f"->Str 1
+Else If T=75
+Then "g"->Str 1
+Else If T=65
+Then "h"->Str 1
+Else If T=55
+Then "i"->Str 1
+Else If T=45
+Then "j"->Str 1
+Else If T=35
+Then "k"->Str 1
+Else If T=25
+Then "l"->Str 1
+Else If T=74
+Then "m"->Str 1
+Else If T=64
+Then "n"->Str 1
+Else If T=54
+Then "o"->Str 1
+Else If T=73
+Then "p"->Str 1
+Else If T=63
+Then "q"->Str 1
+Else If T=53
+Then "r"->Str 1
+Else If T=43
+Then "s"->Str 1
+Else If T=33
+Then "t"->Str 1
+Else If T=72
+Then "u"->Str 1
+Else If T=62
+Then "v"->Str 1
+Else If T=52
+Then "w"->Str 1
+Else If T=42
+Then "x"->Str 1
+Else If T=32
+Then "y"->Str 1
+Else If T=71
+Then "z"->Str 1
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd

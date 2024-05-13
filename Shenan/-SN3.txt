@@ -1,0 +1,39 @@
+T->U
+If U>0
+Then For ((Intg (log U))+1)->J To 1 Step -1
+        Intg (U/10)->V
+        (U-V*10)->U
+        If U=0
+        Then "0"+Str 1->Str 1
+        Else If U=1
+        Then "1"+Str 1->Str 1
+        Else If U=2
+        Then "2"+Str 1->Str 1
+        Else If U=3
+        Then "3"+Str 1->Str 1
+        Else If U=4
+        Then "4"+Str 1->Str 1
+        Else If U=5
+        Then "5"+Str 1->Str 1
+        Else If U=6
+        Then "6"+Str 1->Str 1
+        Else If U=7
+        Then "7"+Str 1->Str 1
+        Else If U=8
+        Then "8"+Str 1->Str 1
+        Else If U=9
+        Then "9"+Str 1->Str 1
+        IfEnd
+        IfEnd
+        IfEnd
+        IfEnd
+        IfEnd
+        IfEnd
+        IfEnd
+        IfEnd
+        IfEnd
+        IfEnd
+        V->U
+    Next
+Else Str 1+"0"->Str 1
+IfEnd

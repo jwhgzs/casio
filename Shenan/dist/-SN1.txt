@@ -1,0 +1,213 @@
+ClrText
+Locate 8,4,"RU ready?"
+Do
+LpWhile Getkey<>0
+Do
+LpWhile Getkey<>31
+ClrText
+100->L
+0->X
+0->Y
+6->Dim List 2
+""->Str 1
+""->Str 2
+""->Str 3
+""->Str 4
+""->Str 5
+"GO!"->Str 6
+For 1->I To 2
+ClrText
+""->Str 4
+"GO!"->Str 6
+List 1[RanInt#(1,Dim List 1)]->T
+For 6->J To 1 Step -1
+Intg (T/100)->U
+(T-U*100)->List 2[J]
+U->T
+Next
+Prog "-SN2"
+Str 1->Str 2
+""->Str 1
+SortA(List 2)
+Prog "-SN2"
+Str 1->Str 3
+""->Str 1
+Prog "-SN50"
+0->E
+RanInt#(25,40)*L->C
+While 1
+Prog "-SN5"
+Do
+LpWhile Getkey<>0
+Do
+C-1->C
+If C<=0
+Then Str 2->Str 3
+If RanInt#(0,1)=0
+Then "Oh no~"->Str 6
+Else "What shili?"->Str 6
+IfEnd
+X+RanInt#(2,4)->X
+Prog "-SN50"
+Prog "-SN5"
+Do
+LpWhile Getkey<>0
+Do
+LpWhile Getkey<>31
+1->E
+Break
+IfEnd
+LpWhile Getkey=0
+If E
+Then Break
+IfEnd
+Getkey->T
+StrLen(Str 4)->U
+If T=44 And U-1>=0
+Then StrLeft(Str 4,U-1)->Str 4
+Else If T=47
+Then 0->C
+Else If U<6
+Then Prog "-SN4"
+Str 4+Str 1->Str 4
+""->Str 1
+IfEnd
+IfEnd
+IfEnd
+StrLen(Str 4)->U
+If U=6 And StrCmp(Str 2,Str 4)=0
+Then Str 2->Str 3
+"Yes Yes!"->Str 6
+X+RanInt#(0,1)->X
+Y+3->Y
+Prog "-SN50"
+Prog "-SN5"
+Do
+LpWhile Getkey<>0
+Do
+LpWhile Getkey<>31
+Break
+IfEnd
+WhileEnd
+Next
+ClrText
+""->Str 4
+Do
+LpWhile Getkey<>0
+Do
+LpWhile Getkey<>31
+For 1->I To 15
+Prog "-SN501"
+Prog "-SN51"
+Do
+LpWhile Getkey<>0
+Do
+If RanInt#(0,15)=0
+Then 21->C
+Else RanInt#(1,54)->C
+IfEnd
+C->T
+Prog "-SN3"
+Str 1->Str 4
+""->Str 1
+Prog "-SN501"
+Prog "-SN51"
+LpWhile Getkey<>31
+If C=21
+Then "Shen Naaan!!"->Str 6
+Y+RanInt#(2,3)->Y
+Prog "-SN50"
+Prog "-SN51"
+Else If C=5
+Then X+5->X
+"Ur wife!"->Str 6
+Prog "-SN50"
+Prog "-SN51"
+Else If C=39
+Then Y+3->Y
+"Genius!"->Str 6
+Prog "-SN50"
+Prog "-SN51"
+Else If C=24
+Then X+1->X
+"Mamba out!"->Str 6
+Prog "-SN50"
+Prog "-SN51"
+Else If C=14
+Then X+1->X
+"Attention!"->Str 6
+Prog "-SN50"
+Prog "-SN51"
+Else If C=11
+Then Y+3->Y
+"SN: Yue..."->Str 6
+Prog "-SN50"
+Prog "-SN51"
+Else If C=13
+Then Y+RanInt#(0,3)->Y
+"Smarter than..."->Str 6
+Prog "-SN50"
+Prog "-SN51"
+Else If C=12
+Then X+RanInt#(0,3)->X
+"Tang wooon!"->Str 6
+Prog "-SN50"
+Prog "-SN51"
+Else If C=40
+Then If RanInt#(0,1)=0
+Then X+RanInt#(0,3)->X
+Else Y+RanInt#(0,3)->Y
+IfEnd
+"Ha ha ha..."->Str 6
+Prog "-SN50"
+Prog "-SN51"
+Else If C=36
+Then X+1->X
+"Oh no!!"->Str 6
+Prog "-SN50"
+Prog "-SN51"
+Else If C=16
+Then Y+1->Y
+"Tian lao!"->Str 6
+Prog "-SN50"
+Prog "-SN51"
+Else If RanInt#(0,7)=0
+Then X+1->X
+"Em. Dui. Yes."->Str 6
+Else "F*ck..."->Str 6
+IfEnd
+Prog "-SN50"
+Prog "-SN51"
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+Do
+LpWhile Getkey<>0
+Do
+LpWhile Getkey<>31
+Next
+ClrText
+ClrGraph
+RclPict 3
+If X>Y
+Then Locate 6,5,"SN: What shili?"
+Else If X=Y
+Then Locate 6,5,"Draw..."
+Else Locate 6,5,"Shenan out!"
+IfEnd
+IfEnd
+Prog "-SN50"
+Locate 1,1,Str 5
+Do
+LpWhile Getkey<>0
+Do
+LpWhile Getkey<>31
+ClrList2

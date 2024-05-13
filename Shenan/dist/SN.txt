@@ -1,0 +1,31 @@
+File 1
+AxesOff
+GridOff
+ViewWindow 1,127,0,1,63,0
+RclPict 1
+Do
+LpWhile Getkey<>0
+Do
+LpWhile Getkey<>31
+ClrGraph
+RclPict 2
+Do
+LpWhile Getkey<>0
+Do
+LpWhile Getkey<>31
+ClrGraph
+RclPict 3
+Locate 6,2,"Press F1..."
+While 1
+Do
+LpWhile Getkey<>0
+Do
+LpWhile Getkey=0
+Getkey->K
+If K=79
+Then Prog "-SN1"
+Break
+IfEnd
+WhileEnd
+AxesOn
+GridOn

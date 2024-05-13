@@ -1,0 +1,8 @@
+X->T
+Prog "-SN3"
+"SN "+Str 1+" - "->Str 5
+""->Str 1
+Y->T
+Prog "-SN3"
+Str 5+Str 1+" ME"->Str 5
+""->Str 1

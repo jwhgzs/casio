@@ -1,0 +1,5 @@
+Prog "-SN50"
+I->T
+Prog "-SN3"
+"Extra: "+Str 1+"/15"->Str 6
+""->Str 1

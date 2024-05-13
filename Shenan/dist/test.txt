@@ -1,0 +1,7 @@
+6->Dim List 2
+List 1[RanInt#(1,Dim List 1)]/10000000000->T
+For 6->J To 1 Step -1
+Intg (T/100)->U
+(T-U*100)->List 2[J]
+U->T
+Next

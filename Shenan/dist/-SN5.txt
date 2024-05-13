@@ -1,0 +1,5 @@
+ClrText
+Locate 1,1,Str 5
+Locate 1,2,Str 6
+Locate 8,5,Str 3
+Locate 8,6,Str 4

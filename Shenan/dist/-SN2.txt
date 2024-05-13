@@ -1,0 +1,80 @@
+For 1->J To 6
+If List 2[J]=31
+Then Str 1+"a"->Str 1
+Else If List 2[J]=32
+Then Str 1+"b"->Str 1
+Else If List 2[J]=33
+Then Str 1+"c"->Str 1
+Else If List 2[J]=34
+Then Str 1+"d"->Str 1
+Else If List 2[J]=35
+Then Str 1+"e"->Str 1
+Else If List 2[J]=36
+Then Str 1+"f"->Str 1
+Else If List 2[J]=37
+Then Str 1+"g"->Str 1
+Else If List 2[J]=38
+Then Str 1+"h"->Str 1
+Else If List 2[J]=39
+Then Str 1+"i"->Str 1
+Else If List 2[J]=10
+Then Str 1+"j"->Str 1
+Else If List 2[J]=11
+Then Str 1+"k"->Str 1
+Else If List 2[J]=12
+Then Str 1+"l"->Str 1
+Else If List 2[J]=13
+Then Str 1+"m"->Str 1
+Else If List 2[J]=14
+Then Str 1+"n"->Str 1
+Else If List 2[J]=15
+Then Str 1+"o"->Str 1
+Else If List 2[J]=16
+Then Str 1+"p"->Str 1
+Else If List 2[J]=17
+Then Str 1+"q"->Str 1
+Else If List 2[J]=18
+Then Str 1+"r"->Str 1
+Else If List 2[J]=19
+Then Str 1+"s"->Str 1
+Else If List 2[J]=20
+Then Str 1+"t"->Str 1
+Else If List 2[J]=21
+Then Str 1+"u"->Str 1
+Else If List 2[J]=22
+Then Str 1+"v"->Str 1
+Else If List 2[J]=23
+Then Str 1+"w"->Str 1
+Else If List 2[J]=24
+Then Str 1+"x"->Str 1
+Else If List 2[J]=25
+Then Str 1+"y"->Str 1
+Else If List 2[J]=26
+Then Str 1+"z"->Str 1
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+IfEnd
+Next
