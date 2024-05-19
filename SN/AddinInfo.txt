@@ -1,0 +1,12 @@
+//------------------------------------------------------------------
+// Addin-Application header control file, created with the CASIO SDK
+//------------------------------------------------------------------
+[OUTPUT]     : "SHENAN.G1A"
+[BINDATA]    : "FXADDINror.bin"
+[DISPNAME]   : "Shenan"
+[APPNAME]    : "@SHENAN"
+[VERSION]    : "01.00.0000"
+[APL_ICON]   : "MainIcon.bmp"
+[MODULE_NUM] : 0
+[MOD1_TITLE] : "Shenan"
+[MOD1_ICON]  : "eActivityIcon.bmp"
