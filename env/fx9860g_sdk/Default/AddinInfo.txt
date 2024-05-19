@@ -1,3 +1,10 @@
 //------------------------------------------------------------------
 // Addin-Application header control file, created with the CASIO SDK
 //------------------------------------------------------------------
+[OUTPUT]     : ""
+[BINDATA]    : ""
+[DISPNAME]   : ""
+[APPNAME]    : ""
+[VERSION]    : ""
+[APL_ICON]   : "MainIcon.bmp"
+[MODULE_NUM] : 0

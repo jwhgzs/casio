@@ -1,4 +1,4 @@
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 19-May-2024 09:17:33  PAGE    1
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 19-May-2024 20:31:48  PAGE    1
 
 ************ OBJECT LISTING ************
 
@@ -15,147 +15,199 @@ SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
         Shenan.c     7    /*   Copyright (c) 2006 CASIO COMPUTER CO., LTD.                 */
         Shenan.c     8    /*                                                               */
         Shenan.c     9    /*****************************************************************/
-        Shenan.c    10    #include "fxlib.h"
+        Shenan.c    10    // #define SH4
         Shenan.c    11    
-        Shenan.c    12    
-        Shenan.c    13    //****************************************************************************
-        Shenan.c    14    //  AddIn_main (Sample program main function)
-        Shenan.c    15    //
-        Shenan.c    16    //  param   :   isAppli   : 1 = This application is launched by MAIN MENU.
-        Shenan.c    17    //                        : 0 = This application is launched by a strip in eACT application.
-        Shenan.c    18    //
-        Shenan.c    19    //              OptionNum : Strip number (0~3)
-        Shenan.c    20    //                         (This parameter is only used when isAppli parameter is 0.)
-        Shenan.c    21    //
-        Shenan.c    22    //  retval  :   1 = No error / 0 = Error
-        Shenan.c    23    //
-        Shenan.c    24    //****************************************************************************
-        Shenan.c    25    int AddIn_main(int isAppli, unsigned short OptionNum)
+        Shenan.c    12    #include "fxlib.h"
+        Shenan.c    13    #ifdef SH4
+        Shenan.c    14        #include "SH4_compatibility.h"
+        Shenan.c    15    #else
+        Shenan.c    16        #define KEY_CTRL_EXE KEY_CHAR_PMINUS
+        Shenan.c    17    #endif
+        Shenan.c    18    #include "MonochromeLib.h"
+        Shenan.c    19    #include "images.h"
+        Shenan.c    20    #include "funcs.h"
+        Shenan.c    21    #include "data.h"
+        Shenan.c    22    
+        Shenan.c    23    #include "pages.h"
+        Shenan.c    24    
+        Shenan.c    25    
+        Shenan.c    26    //****************************************************************************
+        Shenan.c    27    //  AddIn_main (Sample program main function)
+        Shenan.c    28    //
+        Shenan.c    29    //  param   :   isAppli   : 1 = This application is launched by MAIN MENU.
+        Shenan.c    30    //                        : 0 = This application is launched by a strip in eACT application.
+        Shenan.c    31    //
+        Shenan.c    32    //              OptionNum : Strip number (0~3)
+        Shenan.c    33    //                         (This parameter is only used when isAppli parameter is 0.)
+        Shenan.c    34    //
+        Shenan.c    35    //  retval  :   1 = No error / 0 = Error
+        Shenan.c    36    //
+        Shenan.c    37    //****************************************************************************
+        Shenan.c    38    int AddIn_main(int isAppli, unsigned short OptionNum) {
 P   00000000              _AddIn_main:                     ; function: AddIn_main
-                                                           ; frame size=4
-        Shenan.c    26    {
-        Shenan.c    27        unsigned int key;
-        Shenan.c    28    
-        Shenan.c    29        Bdisp_AllClr_DDVRAM();
-    00000000 D30C                   MOV.L       L316+2,R3  ; _Bdisp_AllClr_DDVRAM
-    00000002 7FFC                   ADD         #-4,R15
-    00000004 430B                   JSR         @R3
-    00000006 0009                   NOP
-        Shenan.c    30    
-        Shenan.c    31        locate(1,4);
-    00000008 D20B                   MOV.L       L316+6,R2  ; _locate
-    0000000A E504                   MOV         #4,R5
-    0000000C 420B                   JSR         @R2
-    0000000E E401                   MOV         #1,R4
-        Shenan.c    32        Print((unsigned char*)"This application is");
-    00000010 D40A                   MOV.L       L316+10,R4 ; L302
-    00000012 D30B                   MOV.L       L316+14,R3 ; _Print
-    00000014 430B                   JSR         @R3
-    00000016 0009                   NOP
-        Shenan.c    33        locate(1,5);
-    00000018 D207                   MOV.L       L316+6,R2  ; _locate
-    0000001A E505                   MOV         #5,R5
-    0000001C 420B                   JSR         @R2
-    0000001E E401                   MOV         #1,R4
-        Shenan.c    34        Print((unsigned char*)" sample Add-In.");
-    00000020 D408                   MOV.L       L316+18,R4 ; L303
-    00000022 D307                   MOV.L       L316+14,R3 ; _Print
+                                                           ; frame size=8
+        Shenan.c    39    
+        Shenan.c    40        ML_clear_vram();
+    00000000 DD1A                   MOV.L       L366+4,R13 ; _ML_clear_vram
+    00000002 4D0B                   JSR         @R13
+    00000004 0009                   NOP
+        Shenan.c    41        ML_bmp_or(jwhgzs_png, 0, 0, 128, 64);
+    00000006 E340                   MOV         #64,R3
+    00000008 972E                   MOV.W       L366,R7    ; H'0080
+    0000000A E600                   MOV         #0,R6
+    0000000C D418                   MOV.L       L366+8,R4  ; _jwhgzs_png
+    0000000E 2F36                   MOV.L       R3,@-R15
+    00000010 D218                   MOV.L       L366+12,R2 ; _ML_bmp_or
+    00000012 420B                   JSR         @R2
+    00000014 6563                   MOV         R6,R5
 
 
 
 
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 19-May-2024 09:17:33  PAGE    2
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 19-May-2024 20:31:48  PAGE    2
 
 
 SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
 
-    00000024 430B                   JSR         @R3
-    00000026 0009                   NOP
-    00000028 DE07                   MOV.L       L316+22,R14; _GetKey
-        Shenan.c    35    
-        Shenan.c    36        while(1){
-    0000002A              L313:                             
-        Shenan.c    37            GetKey(&key);
-    0000002A 4E0B                   JSR         @R14
-    0000002C 64F3                   MOV         R15,R4
-    0000002E AFFC                   BRA         L313
-    00000030 0009                   NOP
-    00000032              L316:                             
-    00000032 0000                   .DATA.W     0
-    00000034 <00000000>             .DATA.L     _Bdisp_AllClr_DDVRAM
-    00000038 <00000000>             .DATA.L     _locate
-    0000003C <00000000>             .DATA.L     L302
-    00000040 <00000000>             .DATA.L     _Print
-    00000044 <00000000>             .DATA.L     L303
-    00000048 <00000000>             .DATA.L     _GetKey
-        Shenan.c    38        }
-        Shenan.c    39    
-        Shenan.c    40        return 1;
-        Shenan.c    41    }
-        Shenan.c    42    
-        Shenan.c    43    
-        Shenan.c    44    
-        Shenan.c    45    
-        Shenan.c    46    //****************************************************************************
-        Shenan.c    47    //**************                                              ****************
-        Shenan.c    48    //**************                 Notice!                      ****************
-        Shenan.c    49    //**************                                              ****************
-        Shenan.c    50    //**************  Please do not change the following source.  ****************
-        Shenan.c    51    //**************                                              ****************
-        Shenan.c    52    //****************************************************************************
+        Shenan.c    42        WaitKey(KEY_CTRL_EXE);
+    00000016 DC18                   MOV.L       L366+16,R12; _WaitKey
+    00000018 9E27                   MOV.W       L366+2,R14 ; H'0087
+    0000001A 4C0B                   JSR         @R12
+    0000001C 64E3                   MOV         R14,R4
+        Shenan.c    43        ML_clear_vram();
+    0000001E 4D0B                   JSR         @R13
+    00000020 0009                   NOP
+        Shenan.c    44        ML_bmp_or(sn_png, 0, 0, 128, 64);
+    00000022 E340                   MOV         #64,R3
+    00000024 9720                   MOV.W       L366,R7    ; H'0080
+    00000026 E600                   MOV         #0,R6
+    00000028 D414                   MOV.L       L366+20,R4 ; _sn_png
+    0000002A 2F36                   MOV.L       R3,@-R15
+    0000002C D211                   MOV.L       L366+12,R2 ; _ML_bmp_or
+    0000002E 420B                   JSR         @R2
+    00000030 6563                   MOV         R6,R5
+    00000032 7F08                   ADD         #8,R15
+        Shenan.c    45        WaitKey(KEY_CTRL_EXE);
+    00000034 4C0B                   JSR         @R12
+    00000036 64E3                   MOV         R14,R4
+        Shenan.c    46        ML_clear_vram();
+    00000038 4D0B                   JSR         @R13
+    0000003A 0009                   NOP
+        Shenan.c    47        ML_display_vram();
+    0000003C D310                   MOV.L       L366+24,R3 ; _ML_display_vram
+    0000003E 430B                   JSR         @R3
+    00000040 0009                   NOP
+        Shenan.c    48    
+        Shenan.c    49        PrintLocated(ML_SCREEN_WIDTH / 2, ML_SCREEN_HEIGHT / 2, "Press EXE to go!", 0);
+    00000042 E700                   MOV         #0,R7
+    00000044 D60F                   MOV.L       L366+28,R6 ; L355
+    00000046 E520                   MOV         #32,R5
+    00000048 D20F                   MOV.L       L366+32,R2 ; _PrintLocated
+    0000004A 420B                   JSR         @R2
+    0000004C E440                   MOV         #64,R4
+        Shenan.c    50        ML_display_vram();
+    0000004E D30C                   MOV.L       L366+24,R3 ; _ML_display_vram
+    00000050 430B                   JSR         @R3
+    00000052 0009                   NOP
+        Shenan.c    51        WaitKey(KEY_CTRL_EXE);
+    00000054 4C0B                   JSR         @R12
+    00000056 64E3                   MOV         R14,R4
+        Shenan.c    52        page_game_entry();
+    00000058 D20C                   MOV.L       L366+36,R2 ; _page_game_entry
+    0000005A 420B                   JSR         @R2
+    0000005C 0009                   NOP
+    0000005E DE0C                   MOV.L       L366+40,R14; _WaitAnyKey
         Shenan.c    53    
-        Shenan.c    54    
-        Shenan.c    55    #pragma section _BR_Size
-        Shenan.c    56    unsigned long BR_Size;
-        Shenan.c    57    #pragma section
-        Shenan.c    58    
+        Shenan.c    54        while (1)
+    00000060              L363:                             
+        Shenan.c    55            WaitAnyKey();
+    00000060 4E0B                   JSR         @R14
+    00000062 0009                   NOP
+    00000064 AFFC                   BRA         L363
+    00000066 0009                   NOP
+    00000068              L366:                             
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 19-May-2024 20:31:48  PAGE    3
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+    00000068 0080                   .DATA.W     H'0080
+    0000006A 0087                   .DATA.W     H'0087
+    0000006C <00000000>             .DATA.L     _ML_clear_vram
+    00000070 <00000000>             .DATA.L     _jwhgzs_png
+    00000074 <00000000>             .DATA.L     _ML_bmp_or
+    00000078 <00000000>             .DATA.L     _WaitKey
+    0000007C <00000000>             .DATA.L     _sn_png
+    00000080 <00000000>             .DATA.L     _ML_display_vram
+    00000084 <00000000>             .DATA.L     L355
+    00000088 <00000000>             .DATA.L     _PrintLocated
+    0000008C <00000000>             .DATA.L     _page_game_entry
+    00000090 <00000000>             .DATA.L     _WaitAnyKey
+        Shenan.c    56    
+        Shenan.c    57        return 1;
+        Shenan.c    58    }
         Shenan.c    59    
-        Shenan.c    60    #pragma section _TOP
+        Shenan.c    60    
         Shenan.c    61    
-        Shenan.c    62    //****************************************************************************
-        Shenan.c    63    //  InitializeSystem
-        Shenan.c    64    //
-        Shenan.c    65    //  param   :   isAppli   : 1 = Application / 0 = eActivity
-        Shenan.c    66    //              OptionNum : Option Number (only eActivity)
-        Shenan.c    67    //
-        Shenan.c    68    //  retval  :   1 = No error / 0 = Error
-        Shenan.c    69    //
-        Shenan.c    70    //****************************************************************************
-        Shenan.c    71    int InitializeSystem(int isAppli, unsigned short OptionNum)
+        Shenan.c    62    
+        Shenan.c    63    //****************************************************************************
+        Shenan.c    64    //**************                                              ****************
+        Shenan.c    65    //**************                 Notice!                      ****************
+        Shenan.c    66    //**************                                              ****************
+        Shenan.c    67    //**************  Please do not change the following source.  ****************
+        Shenan.c    68    //**************                                              ****************
+        Shenan.c    69    //****************************************************************************
+        Shenan.c    70    
+        Shenan.c    71    
+        Shenan.c    72    #pragma section _BR_Size
+        Shenan.c    73    unsigned long BR_Size;
+        Shenan.c    74    #pragma section
+        Shenan.c    75    
+        Shenan.c    76    
+        Shenan.c    77    #pragma section _TOP
+        Shenan.c    78    
+        Shenan.c    79    //****************************************************************************
+        Shenan.c    80    //  InitializeSystem
+        Shenan.c    81    //
+        Shenan.c    82    //  param   :   isAppli   : 1 = Application / 0 = eActivity
+        Shenan.c    83    //              OptionNum : Option Number (only eActivity)
+        Shenan.c    84    //
+        Shenan.c    85    //  retval  :   1 = No error / 0 = Error
+        Shenan.c    86    //
+        Shenan.c    87    //****************************************************************************
+        Shenan.c    88    int InitializeSystem(int isAppli, unsigned short OptionNum) {
 P_T 00000000              _InitializeSystem:               ; function: InitializeSystem
                                                            ; frame size=0
-        Shenan.c    72    {
-        Shenan.c    73        return INIT_ADDIN_APPLICATION(isAppli, OptionNum);
+        Shenan.c    89        return INIT_ADDIN_APPLICATION(isAppli, OptionNum);
+    00000000 D301                   MOV.L       L367+2,R3  ; _INIT_ADDIN_APPLICATION
+    00000002 432B                   JMP         @R3
+    00000004 0009                   NOP
+    00000006              L367:                             
+    00000006 0000                   .DATA.W     0
+    00000008 <00000000>             .DATA.L     _INIT_ADDIN_APPLICATION
+        Shenan.c    90    }
+        Shenan.c    91    
+        Shenan.c    92    #pragma section
 
 
 
 
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 19-May-2024 09:17:33  PAGE    3
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 19-May-2024 20:31:48  PAGE    4
 
 
 SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
 
-    00000000 D301                   MOV.L       L317+2,R3  ; _INIT_ADDIN_APPLICATION
-    00000002 432B                   JMP         @R3
-    00000004 0009                   NOP
-    00000006              L317:                             
-    00000006 0000                   .DATA.W     0
-    00000008 <00000000>             .DATA.L     _INIT_ADDIN_APPLICATION
-        Shenan.c    74    }
-        Shenan.c    75    
-        Shenan.c    76    #pragma section
-        Shenan.c    77    
-C   00000000              L302:
-    00000000 5468697320             .SDATA      "This application is"
-             6170706C69   
-             636174696F   
-             6E206973     
-    00000013 00                     .DATA.B     H'00
-    00000014              L303:
-    00000014 2073616D70             .SDATA      " sample Add-In."
-             6C65204164   
-             642D496E2E   
-    00000023 00                     .DATA.B     H'00
+        Shenan.c    93    
+C   00000000              L355:
+    00000000 5072657373             .SDATA      "Press EXE to go!"
+             2045584520   
+             746F20676F   
+             21           
+    00000010 00                     .DATA.B     H'00
 B_B 00000000              _BR_Size:                        ; static: BR_Size
     00000000 00000004               .RES.L      1
 
@@ -196,7 +248,21 @@ B_B 00000000              _BR_Size:                        ; static: BR_Size
 
 
 
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 19-May-2024 09:17:33  PAGE    1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 19-May-2024 20:31:48  PAGE    1
 
 
 ******** STATISTICS INFORMATION ********
@@ -205,23 +271,23 @@ SH SERIES C/C++ Compiler (Ver. 6.0C)                                            
 ********** ERROR INFORMATION ***********
 
 NUMBER OF ERRORS:           0
-NUMBER OF WARNINGS:         0
+NUMBER OF WARNINGS:         1
 
 
 
 
 ******* SOURCE LINE INFORMATION ********
 
-COMPILED SOURCE LINE:       77
+COMPILED SOURCE LINE:       93
 
 
 
 ******* SECTION SIZE INFORMATION *******
 
-PROGRAM  SECTION (P):                               0000004C Byte(s)
+PROGRAM  SECTION (P):                               00000094 Byte(s)
 PROGRAM  SECTION (P_BR_Size):                       00000000 Byte(s)
 PROGRAM  SECTION (P_TOP):                           0000000C Byte(s)
-CONSTANT SECTION (C):                               00000024 Byte(s)
+CONSTANT SECTION (C):                               00000011 Byte(s)
 CONSTANT SECTION (C_BR_Size):                       00000000 Byte(s)
 CONSTANT SECTION (C_TOP):                           00000000 Byte(s)
 DATA     SECTION (D):                               00000000 Byte(s)
@@ -231,15 +297,15 @@ BSS      SECTION (B):                               00000000 Byte(s)
 BSS      SECTION (B_BR_Size):                       00000004 Byte(s)
 BSS      SECTION (B_TOP):                           00000000 Byte(s)
 
- TOTAL PROGRAM SIZE: 00000080 Byte(s)
+ TOTAL PROGRAM SIZE: 000000B5 Byte(s)
 
 
 
 ********** LABEL INFORMATION ***********
 
-NUMBER OF EXTERNAL REFERENCE SYMBOLS:            5
+NUMBER OF EXTERNAL REFERENCE SYMBOLS:           10
 NUMBER OF EXTERNAL DEFINITION SYMBOLS:           3
-NUMBER OF INTERNAL/EXTERNAL SYMBOLS:            13
+NUMBER OF INTERNAL/EXTERNAL SYMBOLS:            17
 
 
 
@@ -265,5 +331,5 @@ NUMBER OF INTERNAL/EXTERNAL SYMBOLS:            13
 *** COMMAND PARAMETER ***
 
 
-  -subcommand=C:\Users\JWHÑó\AppData\Local\Temp\hmk2D0B.tmp 
+  -subcommand=C:\Users\JWHÑó\AppData\Local\Temp\hmk79EA.tmp 
 

@@ -7,7 +7,20 @@
 /*   Copyright (c) 2006 CASIO COMPUTER CO., LTD.                 */
 /*                                                               */
 /*****************************************************************/
+// #define SH4
+
 #include "fxlib.h"
+#ifdef SH4
+    #include "SH4_compatibility.h"
+#else
+    #define KEY_CTRL_EXE KEY_CHAR_PMINUS
+#endif
+#include "MonochromeLib.h"
+#include "images.h"
+#include "funcs.h"
+#include "data.h"
+
+#include "pages.h"
 
 
 //****************************************************************************
@@ -22,20 +35,24 @@
 //  retval  :   1 = No error / 0 = Error
 //
 //****************************************************************************
-int AddIn_main(int isAppli, unsigned short OptionNum)
-{
-    unsigned int key;
+int AddIn_main(int isAppli, unsigned short OptionNum) {
 
-    Bdisp_AllClr_DDVRAM();
+    ML_clear_vram();
+    ML_bmp_or(jwhgzs_png, 0, 0, 128, 64);
+    WaitKey(KEY_CTRL_EXE);
+    ML_clear_vram();
+    ML_bmp_or(sn_png, 0, 0, 128, 64);
+    WaitKey(KEY_CTRL_EXE);
+    ML_clear_vram();
+    ML_display_vram();
 
-    locate(1,4);
-    Print((unsigned char*)"This application is");
-    locate(1,5);
-    Print((unsigned char*)" sample Add-In.");
+    PrintLocated(ML_SCREEN_WIDTH / 2, ML_SCREEN_HEIGHT / 2, "Press EXE to go!", 0);
+    ML_display_vram();
+    WaitKey(KEY_CTRL_EXE);
+    page_game_entry();
 
-    while(1){
-        GetKey(&key);
-    }
+    while (1)
+        WaitAnyKey();
 
     return 1;
 }
@@ -68,8 +85,7 @@ unsigned long BR_Size;
 //  retval  :   1 = No error / 0 = Error
 //
 //****************************************************************************
-int InitializeSystem(int isAppli, unsigned short OptionNum)
-{
+int InitializeSystem(int isAppli, unsigned short OptionNum) {
     return INIT_ADDIN_APPLICATION(isAppli, OptionNum);
 }
 

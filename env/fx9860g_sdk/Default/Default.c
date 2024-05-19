@@ -1,15 +1,5 @@
-/*****************************************************************/
-/*                                                               */
-/*   CASIO fx-9860G SDK Library                                  */
-/*                                                               */
-/*   File name : [ProjectName].c                                 */
-/*                                                               */
-/*   Copyright (c) 2006 CASIO COMPUTER CO., LTD.                 */
-/*                                                               */
-/*****************************************************************/
 #include "fxlib.h"
-
-
+#include "SH4_compatibility.h"
 //****************************************************************************
 //  AddIn_main (Sample program main function)
 //
@@ -40,9 +30,6 @@ int AddIn_main(int isAppli, unsigned short OptionNum)
     return 1;
 }
 
-
-
-
 //****************************************************************************
 //**************                                              ****************
 //**************                 Notice!                      ****************
@@ -51,11 +38,9 @@ int AddIn_main(int isAppli, unsigned short OptionNum)
 //**************                                              ****************
 //****************************************************************************
 
-
 #pragma section _BR_Size
 unsigned long BR_Size;
 #pragma section
-
 
 #pragma section _TOP
 
@@ -74,4 +59,3 @@ int InitializeSystem(int isAppli, unsigned short OptionNum)
 }
 
 #pragma section
-
